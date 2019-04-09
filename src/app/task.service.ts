@@ -6,7 +6,8 @@ import {Task} from './Task';
 import {ParentTask} from './ParentTask';
 import { HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
-
+import {User} from './User';
+import { Project } from './Project';
 
 
 @Injectable({
@@ -23,7 +24,8 @@ export class TaskService {
 
   private baseUrl : string ="http://localhost:9090"
   private task = new Task();
-
+  private user = new User();
+  private project = new Project();
   constructor(private _http :Http,private http:HttpClient) { }
 
   getAllTask() : Observable<Task[]>{
@@ -47,21 +49,38 @@ export class TaskService {
     .pipe(map((response: any) => response));
   }
 
-//   private extractData(res: Response) {
-//     let body = res.json();
-//     return body;
-//  }
+// USER
 
-//  private handleError (error: any) {
-//   let errMsg = error.message || 'Server error';
-//   console.error(errMsg); // log to console instead
-//   return Observable.throw(errMsg);
-// }
+addUser(user : User){
+  return this.http.post(this.baseUrl+ '/user/addUser' , user, this.httpOptions)
+  .pipe(map((res : Response)=> res));
+}
+
+getAllUser() : Observable<User[]>{
+  return this.http.get(this.baseUrl+"/user/getAllUser")
+  .pipe(map((response: any) => response));
+}
+
+// getter setters
 
   setTask(task :Task){
     this.task=task;
   }
   getTask(){
     return this.task;
+  }
+
+  setUser(user : User){
+    this.user=user;
+  }
+  getUser(){
+    return this.user;
+  }
+
+  setProject(project : Project){
+    this.project=project;
+  }
+  getproject(){
+    return this.project;
   }
 }
