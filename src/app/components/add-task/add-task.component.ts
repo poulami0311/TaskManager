@@ -22,7 +22,6 @@ export class AddTaskComponent implements OnInit {
     this.task= this._taskService.getTask();
     console.log(this.parentTasks);
     this._taskService.getAllParentTask().subscribe((res) => {
-      console.log(res);
       this.parentTasks=res;
     },(error) => {
       console.log(error);

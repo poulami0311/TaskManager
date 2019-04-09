@@ -11,6 +11,8 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import {TaskFilter} from './task-filter';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AddProjectComponent } from './components/add-project/add-project.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {TaskFilter} from './task-filter';
     AddTaskComponent,
     ViewTaskComponent,
     HeaderComponent,
-    TaskFilter
+    TaskFilter,
+    AddUserComponent,
+    AddProjectComponent
   ],
   imports: [
     BrowserModule,
