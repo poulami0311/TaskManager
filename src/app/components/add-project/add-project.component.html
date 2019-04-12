@@ -18,7 +18,7 @@
             </div>
           <div class="col-sm-3" [hidden]="!dateCheck">
               <label for="task"><b>End Date</b></label>
-              <input class="form-control" type="date" placeholder="start date" name="strtDate" [(ngModel)]="project.startDate" required>
+              <input class="form-control" type="date" placeholder="start date" name="endDate" [(ngModel)]="project.endDate" required>
             </div>
         </div>
       <div class="row" style="margin : 3px;">
@@ -38,10 +38,14 @@
                 <label for="task"><b>Manager</b></label>
             </div>
             <div class="col-sm-6">
-                <input class="form-control" type="text" name="userid" [(ngModel)]="project.userid" required>
+                <!-- <input class="form-control" type="text" name="userid" [(ngModel)]="project.userid" required> -->
+                <select class="form-control" name="userid" [(ngModel)]="project.userid">
+                    <option [value]="user.userId" *ngFor="let user of users">{{user.fname}} {{user.lname}}</option>
+                  </select>
             </div>
             <div class="col-sm-3">
-                <input type="submit" value="Search" (click)="searchUser()">
+                <!-- <input type="submit" value="Search" (click)="searchUser()"> -->
+                <ngbd-modal-basic></ngbd-modal-basic>
             </div>
           </div>
 

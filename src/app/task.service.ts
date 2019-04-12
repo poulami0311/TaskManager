@@ -61,6 +61,29 @@ getAllUser() : Observable<User[]>{
   .pipe(map((response: any) => response));
 }
 
+deleteUser(user: User){
+  return this.http.post(this.baseUrl+ '/user/deleteUser' , user, this.httpOptions)
+  .pipe(map((res : Response)=> res));
+}
+
+//PROJECT
+
+addProject(project : Project){
+  return this.http.post(this.baseUrl+ '/user/addProject' , project, this.httpOptions)
+  .pipe(map((res : Response)=> res));
+}
+
+getAllProject() : Observable<Project[]>{
+  return this.http.get(this.baseUrl+"/user/getAllProject")
+  .pipe(map((response: any) => response));
+}
+
+deleteProject(project: Project){
+  return this.http.post(this.baseUrl+ '/user/deleteProject' , project, this.httpOptions)
+  .pipe(map((res : Response)=> res));
+}
+
+
 // getter setters
 
   setTask(task :Task){

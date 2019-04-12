@@ -13,6 +13,8 @@ import {FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import {TaskFilter} from './task-filter';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
+import { ModalBasicComponent } from './components/modal-basic/modal-basic.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AddProjectComponent } from './components/add-project/add-project.compon
     HeaderComponent,
     TaskFilter,
     AddUserComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    ModalBasicComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { AddProjectComponent } from './components/add-project/add-project.compon
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
- 
+    NgbModule,
   
   ],
   providers: [

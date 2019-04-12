@@ -25,6 +25,8 @@ export class AddUserComponent implements OnInit {
       employeeId: ['', [Validators.required]]
   });
 
+  
+
   //getAllUser
   this._taskService.getAllUser().subscribe((res) => {
      this.users=res;
@@ -40,6 +42,7 @@ export class AddUserComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
   }else{
+   
     this.user.fname=this.userForm.value.fname;
     this.user.lname=this.userForm.value.lname;
     this.user.employeeId=this.userForm.value.employeeId;
@@ -48,13 +51,36 @@ export class AddUserComponent implements OnInit {
       this._taskService.getAllUser().subscribe((u) => {
         this.users=u;
        });
-    console.log(res);
+   
     },(error) => {
       console.log(error);
      
     })
   }
-    console.log(this.userForm.value);
+   
   }
+
+
+  editUser(user){
+    console.log(user)
+    this._taskService.setTask(user);
+    //this._router.navigate(['user'])
+    // Update the data on the form
+  this.userForm.patchValue({
+    fname: user.fname,
+    lname: user.lname,
+    employeeId: user.employeeId
+});
+this.user.userId=user.userId;
+}
+
+deleteUser(user){
+  this._taskService.deleteUser(user).subscribe((res) => {
+    this._taskService.getAllUser().subscribe((u) => {
+      this.users=u;
+     });
+ 
+  });
+}
 
 }

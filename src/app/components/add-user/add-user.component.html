@@ -72,12 +72,12 @@
         <li class="list-group-item" *ngFor="let user of users">
                 <div class="row">
                 <div class="col-sm-8 rowColor" > <span>{{user.fname}}</span></div>
-                <div class="col-sm-4"><input type="submit" value="Edit"></div>
+                <div class="col-sm-4"><input type="submit"  value="Edit" (click)="editUser(user)" style="margin-bottom:3px;"></div>
                 </div>
                 <div class="row">
                        
                     <div class="col-sm-8 rowColor"> <span>{{user.lname}}</span></div>
-                    <div class="col-sm-4"><input type="submit" value="Delete"></div>
+                    <div class="col-sm-4"><input type="submit" value="Delete" (click)="deleteUser(user)"></div>
    
                 </div>
                  <div class="row">

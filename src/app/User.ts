@@ -1,5 +1,5 @@
 export class User{
-    
+    userId: number;
     fname : string;
     lname : string;
     employeeId : number;
@@ -7,6 +7,7 @@ export class User{
     taskId: number;
 
     constructor(){
+        this.userId=0;
         this.fname='';
         this.lname='';
         this.employeeId=0;
