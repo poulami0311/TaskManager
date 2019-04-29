@@ -11,10 +11,13 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import {TaskFilter} from './task-filter';
+import {UserFilter} from './user-filter';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
-import { ModalBasicComponent } from './components/modal-basic/modal-basic.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ModalContentComponent } from './components/modal-content/modal-content.component';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +26,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ViewTaskComponent,
     HeaderComponent,
     TaskFilter,
+    UserFilter,
     AddUserComponent,
     AddProjectComponent,
-    ModalBasicComponent
+    ModalContentComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +42,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   
   ],
   providers: [
-    TaskService
+    TaskService,
+
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ModalContentComponent ]
+
 })
 export class AppModule { }

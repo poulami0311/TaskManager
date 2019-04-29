@@ -52,24 +52,24 @@
   <hr>
   <div class="row" style="margin : 3px;">
       <div class="col-sm-5">
-          <input class="form-control" type="text" placeholder="Search" name="search" required>
+          <input class="form-control" type="text" placeholder="Search" name="search" [(ngModel)]="userSrch" required>
       </div>
       <div class="col-sm-1">
           <label for="task"><b>Sort :</b></label>
         </div>
       <div class="col-sm-2">
-          <input type="submit" value="First Name" >
+          <input type="submit" value="First Name" (click)="orderByFname()">
         </div>
         <div class="col-sm-2">
-            <input type="submit" value="Last Name">
+            <input type="submit" value="Last Name" (click)="orderByLname()">
           </div>
           <div class="col-sm-2">
-              <input type="submit" value="ID">
+              <input type="submit" value="ID" (click)="orderByEmployeeId()">
             </div>
     </div>
     <hr class="dot">
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let user of users">
+        <li class="list-group-item" *ngFor="let user of users | searchFilter:'fname,lname,employeeId':userSrch">
                 <div class="row">
                 <div class="col-sm-8 rowColor" > <span>{{user.fname}}</span></div>
                 <div class="col-sm-4"><input type="submit"  value="Edit" (click)="editUser(user)" style="margin-bottom:3px;"></div>

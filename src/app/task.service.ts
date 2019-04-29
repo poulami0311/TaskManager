@@ -61,16 +61,41 @@ getAllUser() : Observable<User[]>{
   .pipe(map((response: any) => response));
 }
 
+getDistinctUser() : Observable<User[]>{
+  return this.http.get(this.baseUrl+"/user/getDistinctUser")
+  .pipe(map((response: any) => response));
+}
+
 deleteUser(user: User){
   return this.http.post(this.baseUrl+ '/user/deleteUser' , user, this.httpOptions)
   .pipe(map((res : Response)=> res));
+}
+
+findUser(id : number){
+  return this.http.get(this.baseUrl+"/user/findUser/"+id)
+  .pipe(map((response: any) => response));
+}
+
+getAllUserOrderByFname() : Observable<User[]>{
+  return this.http.get(this.baseUrl+"/user/getAllUserOrderByFname")
+  .pipe(map((response: any) => response));
+}
+
+getAllUserOrderByLname() : Observable<User[]>{
+  return this.http.get(this.baseUrl+"/user/getAllUserOrderByLname")
+  .pipe(map((response: any) => response));
+}
+
+getAllUserOrderByEmployeeId() : Observable<User[]>{
+  return this.http.get(this.baseUrl+"/user/getAllUserOrderByEmployeeId")
+  .pipe(map((response: any) => response));
 }
 
 //PROJECT
 
 addProject(project : Project){
   return this.http.post(this.baseUrl+ '/user/addProject' , project, this.httpOptions)
-  .pipe(map((res : Response)=> res));
+  .pipe(map((res : Project)=> res));
 }
 
 getAllProject() : Observable<Project[]>{
@@ -83,7 +108,20 @@ deleteProject(project: Project){
   .pipe(map((res : Response)=> res));
 }
 
+getAllProjectOrderByPriority() : Observable<Project[]>{
+  return this.http.get(this.baseUrl+"/user/getAllProjectOrderByPriority")
+  .pipe(map((response: any) => response));
+}
 
+getAllProjectOrderByStartDate() : Observable<Project[]>{
+  return this.http.get(this.baseUrl+"/user/getAllProjectOrderByStartDate")
+  .pipe(map((response: any) => response));
+}
+
+getAllProjectOrderByEndDate() : Observable<Project[]>{
+  return this.http.get(this.baseUrl+"/user/getAllProjectOrderByEndDate")
+  .pipe(map((response: any) => response));
+}
 // getter setters
 
   setTask(task :Task){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {User} from '../../User'
 import {TaskService} from '../../task.service';
 import {Router} from '@angular/router';
@@ -18,6 +18,7 @@ export class AddUserComponent implements OnInit {
   constructor(private _taskService : TaskService,private _router : Router,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
     this.user= this._taskService.getUser();
     this.userForm = this.formBuilder.group({
       fname: ['', Validators.required],
@@ -83,4 +84,20 @@ deleteUser(user){
   });
 }
 
+
+orderByFname(){
+  this._taskService.getAllUserOrderByFname().subscribe((u) => {
+    this.users=u;
+   });
+}
+orderByLname(){
+  this._taskService.getAllUserOrderByLname().subscribe((u) => {
+    this.users=u;
+   });
+}
+orderByEmployeeId(){
+  this._taskService.getAllUserOrderByEmployeeId().subscribe((u) => {
+    this.users=u;
+   });
+}
 }
