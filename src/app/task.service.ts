@@ -26,6 +26,7 @@ export class TaskService {
   private task = new Task();
   private user = new User();
   private project = new Project();
+  private parentTask = new ParentTask();
   constructor(private _http :Http,private http:HttpClient) { }
 
   getAllTask() : Observable<Task[]>{
@@ -43,9 +44,38 @@ export class TaskService {
     .pipe(map((res : Response)=> res));
   }
 
+  addParentTask(pt : ParentTask){
+    return this.http.post(this.baseUrl+ '/task/addParentTask' , pt, this.httpOptions)
+    .pipe(map((res : Response)=> res));
+  }
 
   getAllParentTask(): Observable<ParentTask[]>{
     return this.http.get(this.baseUrl+"/task/getAllParentTask")
+    .pipe(map((response: any) => response));
+  }
+
+  getAllTaskOrderByPriority() : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/getAllTaskOrderByPriority")
+    .pipe(map((response: any) => response));
+  }
+  
+  getAllTaskOrderByStartDate() : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/getAllTaskOrderByStartDate")
+    .pipe(map((response: any) => response));
+  }
+  
+  getAllTaskOrderByEndDate() : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/getAllTaskOrderByEndDate")
+    .pipe(map((response: any) => response));
+  }
+
+  getAllTaskOrderByStatus() : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/getAllTaskOrderByStatus")
+    .pipe(map((response: any) => response));
+  }
+
+  findByProjectId(projectId :number) : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/findByProjectId/" + projectId)
     .pipe(map((response: any) => response));
   }
 
@@ -122,6 +152,12 @@ getAllProjectOrderByEndDate() : Observable<Project[]>{
   return this.http.get(this.baseUrl+"/user/getAllProjectOrderByEndDate")
   .pipe(map((response: any) => response));
 }
+
+findProject(id : number){
+  return this.http.get(this.baseUrl+"/user/findProject/"+id)
+  .pipe(map((response: any) => response));
+}
+
 // getter setters
 
   setTask(task :Task){
@@ -129,6 +165,12 @@ getAllProjectOrderByEndDate() : Observable<Project[]>{
   }
   getTask(){
     return this.task;
+  }
+  setParentTask(parentTask :ParentTask){
+    this.parentTask=parentTask;
+  }
+  getParentTask(){
+    return this.parentTask;
   }
 
   setUser(user : User){

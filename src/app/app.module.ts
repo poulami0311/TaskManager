@@ -17,6 +17,7 @@ import { AddProjectComponent } from './components/add-project/add-project.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { ModalProjectComponent } from './components/modal-project/modal-project.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ModalContentComponent } from './components/modal-content/modal-content.
     UserFilter,
     AddUserComponent,
     AddProjectComponent,
-    ModalContentComponent
+    ModalContentComponent,
+    ModalProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import { ModalContentComponent } from './components/modal-content/modal-content.
 
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ ModalContentComponent ]
+  entryComponents: [ ModalContentComponent,ModalProjectComponent ]
 
 })
 export class AppModule { }

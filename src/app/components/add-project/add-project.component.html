@@ -14,11 +14,14 @@
           </div>
           <div class="col-sm-3" [hidden]="!dateCheck"> 
               <label for="task"><b>Start Date</b></label>
-              <input class="form-control" type="date" placeholder="start date" name="strtDate" [(ngModel)]="project.startDate" required>
+              <!-- <input class="form-control" type="date" placeholder="start date" name="strtDate" [(ngModel)]="project.startDate" required> -->
+              <input type="date" name="startDate" [ngModel] ="project.startDate | date:'yyyy-MM-dd'" (ngModelChange)="project.startDate = $event">
             </div>
           <div class="col-sm-3" [hidden]="!dateCheck">
               <label for="task"><b>End Date</b></label>
-              <input class="form-control" type="date" placeholder="start date" name="endDate" [(ngModel)]="project.endDate" required>
+              <!-- <input class="form-control" type="date" placeholder="start date" name="endDate" [(ngModel)]="project.endDate" required> -->
+              <input type="date" name="endDate" [ngModel] ="project.endDate | date:'yyyy-MM-dd'" (ngModelChange)="project.endDate = $event">
+
             </div>
         </div>
       <div class="row" style="margin : 3px;">

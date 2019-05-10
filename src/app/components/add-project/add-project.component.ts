@@ -23,8 +23,13 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit() {
     this.project= this._taskService.getproject();
+    this.project.startDate= new Date();
+    this.project.startDate.setDate(this.project.startDate.getDate() + 1);
+    this.project.endDate= new Date();
+    this.project.endDate.setDate(this.project.endDate.getDate() + 1);
+
     this.modalOpened=false;
-    this.dateCheck = false;
+    
     this._taskService.getAllUser().subscribe((res) => {
       this.users = res;
     },(error) => {
