@@ -37,7 +37,15 @@ export class AddProjectComponent implements OnInit {
     });
     this._taskService.getAllProject().subscribe((p) => {
       this.projects=p;
-      console.log(this.projects)
+      this.projects.forEach(project=>{
+        this._taskService.countTaskByProject(project.projectId).subscribe((p) => {
+          project['noofTask']=p;
+        });
+        this._taskService.countCompleted(project.projectId).subscribe((p) => {
+          project['noofCompleted']=p;
+        });
+      });
+     
      });
   }
 
@@ -61,7 +69,14 @@ export class AddProjectComponent implements OnInit {
 
       this._taskService.getAllProject().subscribe((p) => {
         this.projects=p;
-        
+        this.projects.forEach(project=>{
+          this._taskService.countTaskByProject(project.projectId).subscribe((p) => {
+            project['noofTask']=p;
+          });
+          this._taskService.countCompleted(project.projectId).subscribe((p) => {
+            project['noofCompleted']=p;
+          });
+        });
        });
      
   });
@@ -98,20 +113,41 @@ editProject(project) {
   orderByPriority(){
     this._taskService.getAllProjectOrderByPriority().subscribe((p) => {
       this.projects=p;
-     
+      this.projects.forEach(project=>{
+        this._taskService.countTaskByProject(project.projectId).subscribe((p) => {
+          project['noofTask']=p;
+        });
+        this._taskService.countCompleted(project.projectId).subscribe((p) => {
+          project['noofCompleted']=p;
+        });
+      });
      });
   }
   orderByStartDate(){
     this._taskService.getAllProjectOrderByStartDate().subscribe((p) => {
       this.projects=p;
-     
+      this.projects.forEach(project=>{
+        this._taskService.countTaskByProject(project.projectId).subscribe((p) => {
+          project['noofTask']=p;
+        });
+        this._taskService.countCompleted(project.projectId).subscribe((p) => {
+          project['noofCompleted']=p;
+        });
+      });
      });
   }
 
   orderByEndDate(){
     this._taskService.getAllProjectOrderByEndDate().subscribe((p) => {
       this.projects=p;
-     
+      this.projects.forEach(project=>{
+        this._taskService.countTaskByProject(project.projectId).subscribe((p) => {
+          project['noofTask']=p;
+        });
+        this._taskService.countCompleted(project.projectId).subscribe((p) => {
+          project['noofCompleted']=p;
+        });
+      });
      });
   }
 }

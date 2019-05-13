@@ -79,6 +79,14 @@ export class TaskService {
     .pipe(map((response: any) => response));
   }
 
+  countTaskByProject(projectId :number) : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/countByProjectid/" + projectId)
+    .pipe(map((response: any) => response));
+  }
+  countCompleted(projectId :number) : Observable<Task[]>{
+    return this.http.get(this.baseUrl+"/task/countCompleted/" + projectId)
+    .pipe(map((response: any) => response));
+  }
 // USER
 
 addUser(user : User){

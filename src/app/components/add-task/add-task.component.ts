@@ -47,7 +47,7 @@ export class AddTaskComponent implements OnInit {
     
     this._taskService.getAllParentTask().subscribe((res) => {
       this.parentTasks=res;
-      console.log(this.parentTasks);
+      // console.log(this.parentTasks);
     },(error) => {
       console.log(error);
     });
@@ -65,13 +65,13 @@ export class AddTaskComponent implements OnInit {
 
   
   addTask(){
-    console.log(this.task);
+    // console.log(this.task);
     
     if(this.isParent){
       this.parentTsk.parentTask=this.task.task;
       
          this._taskService.addParentTask(this.parentTsk).subscribe((res) => {
-         console.log(res);
+        //  console.log(res);
         },(error) => {
           console.log(error);
         
@@ -81,7 +81,19 @@ export class AddTaskComponent implements OnInit {
     
 
        this._taskService.addTask(this.task).subscribe((res) => {
-         console.log(res['taskId']);
+        //  console.log(res);
+         this._taskService.findUser(this.selectedUser).subscribe((user) => {
+          if(user['taskId']==0){
+            user['taskId'] = res['taskId']
+          }
+          else{
+            user['userId'] = 0;
+            user['taskId'] = res['taskId']
+          }
+          
+          this._taskService.addUser(user).subscribe((res) => {
+          });
+         });
       this._router.navigate(['viewTask'])
     },(error) => {
       console.log(error);
